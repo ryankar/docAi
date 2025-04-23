@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -e
+
+# Navigate to the app directory
+cd "$(dirname "$0")/.."
+
+echo "-----> Installing node modules"
+npm install
+
+echo "-----> Running Tailwind CSS build"
+npm run build:css
+
+echo "-----> Precompiling Rails assets"
+bundle exec rake assets:precompile RAILS_ENV=production
+
+echo "-----> Build completed"
+
+exit 0 

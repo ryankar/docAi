@@ -59,6 +59,12 @@ Rails.application.configure do
   # Set host to be used by links generated in mailer templates.
   config.action_mailer.default_url_options = { host: "example.com" }
 
+  # CSS asset compilation settings
+  config.assets.css_compressor = nil
+  config.assets.compile = true
+  config.assets.debug = false
+  config.assets.digest = true
+
   # Specify outgoing SMTP server. Remember to add smtp/* credentials via rails credentials:edit.
   # config.action_mailer.smtp_settings = {
   #   user_name: Rails.application.credentials.dig(:smtp, :user_name),
