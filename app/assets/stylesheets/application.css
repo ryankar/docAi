@@ -8,3 +8,202 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer components {
+  /* Button Styles */
+  .btn-primary {
+    @apply inline-flex items-center rounded-lg bg-gradient-to-r from-fuchsia-600 to-violet-600 px-5 py-2.5 text-sm font-bold text-white shadow-lg hover:from-fuchsia-500 hover:to-violet-500 transition-all duration-300 hover:scale-105 hover:shadow-xl justify-center;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center rounded-lg bg-white px-5 py-2.5 text-sm font-bold text-fuchsia-600 shadow-lg border border-fuchsia-200 hover:bg-fuchsia-50 transition-all duration-300 hover:scale-105 hover:shadow-xl justify-center;
+  }
+  
+  .btn-accent {
+    @apply inline-flex items-center rounded-lg bg-gradient-to-r from-cyan-500 to-teal-500 px-5 py-2.5 text-sm font-bold text-white shadow-lg hover:from-cyan-400 hover:to-teal-400 transition-all duration-300 hover:scale-105 hover:shadow-xl justify-center;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center rounded-lg bg-gradient-to-r from-rose-500 to-pink-500 px-5 py-2.5 text-sm font-bold text-white shadow-lg hover:from-rose-400 hover:to-pink-400 transition-all duration-300 hover:scale-105 hover:shadow-xl justify-center;
+  }
+
+  /* Form Elements */
+  .form-input {
+    @apply block w-full rounded-lg border-0 py-2.5 px-4 text-gray-800 shadow-md ring-1 ring-inset ring-fuchsia-200 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-fuchsia-500 sm:text-sm sm:leading-6 bg-white;
+  }
+
+  .form-label {
+    @apply block text-sm font-bold leading-6 text-fuchsia-700 mb-2;
+  }
+
+  /* Card Styles */
+  .card {
+    @apply bg-white rounded-2xl shadow-xl overflow-hidden border border-fuchsia-100 hover:shadow-2xl transition-all duration-300;
+  }
+
+  .card-gradient {
+    @apply bg-gradient-to-br from-white to-fuchsia-50 rounded-2xl shadow-xl overflow-hidden border border-fuchsia-200;
+  }
+
+  .card-header {
+    @apply bg-gradient-to-r from-fuchsia-600 via-violet-600 to-purple-600 px-8 py-6 text-white;
+  }
+
+  /* Background gradients */
+  .bg-gradient-primary {
+    @apply bg-gradient-to-r from-fuchsia-600 via-violet-600 to-purple-600;
+  }
+  
+  .bg-gradient-secondary {
+    @apply bg-gradient-to-r from-cyan-500 to-teal-500;
+  }
+  
+  .bg-gradient-accent {
+    @apply bg-gradient-to-r from-amber-500 to-orange-500;
+  }
+
+  .bg-gradient-page {
+    @apply bg-gradient-to-br from-fuchsia-50 via-violet-50 to-white;
+  }
+
+  /* Badge styles */
+  .badge {
+    @apply inline-flex items-center px-3.5 py-1.5 rounded-full text-sm font-bold shadow-sm;
+  }
+  
+  .badge-blue {
+    @apply badge bg-cyan-100 text-cyan-700 border border-cyan-200;
+  }
+  
+  .badge-indigo {
+    @apply badge bg-violet-100 text-violet-700 border border-violet-200;
+  }
+  
+  .badge-purple {
+    @apply badge bg-fuchsia-100 text-fuchsia-700 border border-fuchsia-200;
+  }
+  
+  .badge-pink {
+    @apply badge bg-pink-100 text-pink-700 border border-pink-200;
+  }
+  
+  .badge-emerald {
+    @apply badge bg-teal-100 text-teal-700 border border-teal-200;
+  }
+  
+  .badge-orange {
+    @apply badge bg-amber-100 text-amber-700 border border-amber-200;
+  }
+
+  /* Document styling */
+  .document-content {
+    @apply font-serif text-gray-800 leading-relaxed;
+  }
+
+  .document-content h1 {
+    @apply text-2xl font-bold mt-8 mb-4 text-fuchsia-900 border-b border-fuchsia-200 pb-3;
+  }
+
+  .document-content h2 {
+    @apply text-xl font-bold mt-6 mb-3 text-violet-800;
+  }
+
+  .document-content h3 {
+    @apply text-lg font-bold mt-4 mb-2 text-purple-700;
+  }
+
+  .document-content p {
+    @apply my-3 text-base;
+  }
+
+  .document-content ul, .document-content ol {
+    @apply my-4 pl-6;
+  }
+
+  .document-content li {
+    @apply mb-2;
+  }
+
+  .document-content ul > li {
+    @apply list-disc;
+  }
+
+  .document-content ol > li {
+    @apply list-decimal;
+  }
+  
+  .document-content strong {
+    @apply font-bold text-fuchsia-900;
+  }
+  
+  .document-content em {
+    @apply italic text-violet-800;
+  }
+  
+  .document-paper {
+    @apply bg-white rounded-xl border-2 border-fuchsia-200 shadow-xl p-8 mb-6;
+    background-image: 
+      radial-gradient(circle at 100% 0%, rgba(236, 72, 153, 0.05) 15%, transparent 60%), 
+      radial-gradient(circle at 0% 100%, rgba(167, 139, 250, 0.05) 15%, transparent 60%);
+    box-shadow: 0 15px 25px -10px rgba(192, 132, 252, 0.15), 0 5px 10px -5px rgba(112, 26, 117, 0.1);
+  }
+
+  /* Additional styling classes */
+  .colorful-shadow {
+    box-shadow: 0 15px 25px -10px rgba(192, 132, 252, 0.15), 0 5px 10px -5px rgba(112, 26, 117, 0.1);
+  }
+  
+  .glassmorphism {
+    @apply bg-white/90 border border-white/50 backdrop-blur-md;
+  }
+  
+  /* Custom animation classes */
+  .hover-float {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+  }
+
+  /* Prose styles for document content */
+  .prose h1 {
+    @apply text-2xl font-bold mt-8 mb-4 text-gray-900 border-b border-gray-200 pb-3;
+  }
+
+  .prose h2 {
+    @apply text-xl font-bold mt-6 mb-3 text-gray-800;
+  }
+
+  .prose h3 {
+    @apply text-lg font-bold mt-4 mb-2 text-gray-800;
+  }
+
+  .prose p {
+    @apply my-3 text-base;
+  }
+
+  .prose ul, .prose ol {
+    @apply my-4 pl-6;
+  }
+
+  .prose li {
+    @apply mb-2;
+  }
+
+  .prose ul > li {
+    @apply list-disc;
+  }
+
+  .prose ol > li {
+    @apply list-decimal;
+  }
+  
+  .prose strong {
+    @apply font-bold text-gray-900;
+  }
+  
+  .prose em {
+    @apply italic text-gray-700;
+  }
+}

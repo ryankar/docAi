@@ -10,9 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_04_22_000000) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_22_211806) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "documents", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.string "document_type"
+    t.string "status"
+    t.jsonb "metadata", default: {}
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["document_type"], name: "index_documents_on_document_type"
+    t.index ["status"], name: "index_documents_on_status"
+  end
 
   create_table "tests", force: :cascade do |t|
     t.string "name"

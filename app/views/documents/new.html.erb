@@ -1,0 +1,128 @@
+<div class="min-h-full bg-gradient-to-br from-violet-50 via-fuchsia-50 to-cyan-50">
+  <div class="px-4 sm:px-6 lg:px-8 py-8 max-w-7xl mx-auto">
+    <div class="bg-white/70 backdrop-blur-xl rounded-2xl shadow-xl overflow-hidden border border-indigo-100">
+      <div class="bg-gradient-to-r from-violet-600 via-fuchsia-600 to-cyan-600 px-8 py-6">
+        <div class="text-center">
+          <h1 class="text-2xl font-bold text-white">Create New Document</h1>
+          <p class="mt-2 text-sm text-white/80">Select a document type and fill in the required information.</p>
+        </div>
+      </div>
+
+      <div class="p-8">
+        <div class="max-w-3xl mx-auto">
+          <%= form_with(url: generate_documents_path, method: :post, class: "space-y-8") do |f| %>
+            <div class="space-y-8 divide-y divide-indigo-100">
+              <div class="space-y-6 sm:space-y-5">
+                <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:pt-5">
+                  <%= f.label :document_type, class: "block text-sm font-medium leading-6 text-indigo-900 sm:pt-1.5" %>
+                  <div class="mt-2 sm:col-span-2 sm:mt-0">
+                    <%= f.select :document_type, 
+                        @document_types,
+                        { prompt: "Select document type" },
+                        class: "block w-full rounded-lg border-0 py-1.5 text-indigo-900 shadow-sm ring-1 ring-inset ring-indigo-200 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:max-w-xs sm:text-sm sm:leading-6 bg-white/70 backdrop-blur-sm",
+                        data: { action: "change->document#toggleFields" }
+                    %>
+                  </div>
+                </div>
+              </div>
+
+              <div id="nda-fields" class="hidden document-fields space-y-6 sm:space-y-5 divide-y divide-indigo-100 pt-6">
+                <div class="space-y-6 sm:space-y-5">
+                  <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:pt-5">
+                    <%= f.label :party_one, "First Party Name", class: "block text-sm font-medium leading-6 text-indigo-900 sm:pt-1.5" %>
+                    <div class="mt-2 sm:col-span-2 sm:mt-0">
+                      <%= f.text_field :parameters, name: "parameters[party_one]", class: "block w-full rounded-lg border-0 py-1.5 text-indigo-900 shadow-sm ring-1 ring-inset ring-indigo-200 placeholder:text-indigo-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-sm sm:leading-6 bg-white/70 backdrop-blur-sm" %>
+                    </div>
+                  </div>
+
+                  <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:pt-5">
+                    <%= f.label :party_two, "Second Party Name", class: "block text-sm font-medium leading-6 text-indigo-900 sm:pt-1.5" %>
+                    <div class="mt-2 sm:col-span-2 sm:mt-0">
+                      <%= f.text_field :parameters, name: "parameters[party_two]", class: "block w-full rounded-lg border-0 py-1.5 text-indigo-900 shadow-sm ring-1 ring-inset ring-indigo-200 placeholder:text-indigo-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-sm sm:leading-6 bg-white/70 backdrop-blur-sm" %>
+                    </div>
+                  </div>
+
+                  <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:pt-5">
+                    <%= f.label :confidential_info, "Description of Confidential Information", class: "block text-sm font-medium leading-6 text-indigo-900 sm:pt-1.5" %>
+                    <div class="mt-2 sm:col-span-2 sm:mt-0">
+                      <%= f.text_area :parameters, name: "parameters[confidential_info]", rows: 3, class: "block w-full rounded-lg border-0 py-1.5 text-indigo-900 shadow-sm ring-1 ring-inset ring-indigo-200 placeholder:text-indigo-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-sm sm:leading-6 bg-white/70 backdrop-blur-sm" %>
+                      <p class="mt-2 text-sm text-indigo-600">Describe the confidential information that will be shared between parties.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="employment-fields" class="hidden document-fields space-y-6 sm:space-y-5 divide-y divide-indigo-100 pt-6">
+                <div class="space-y-6 sm:space-y-5">
+                  <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:pt-5">
+                    <%= f.label :employer, "Employer Name", class: "block text-sm font-medium leading-6 text-indigo-900 sm:pt-1.5" %>
+                    <div class="mt-2 sm:col-span-2 sm:mt-0">
+                      <%= f.text_field :parameters, name: "parameters[employer]", class: "block w-full rounded-lg border-0 py-1.5 text-indigo-900 shadow-sm ring-1 ring-inset ring-indigo-200 placeholder:text-indigo-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-sm sm:leading-6 bg-white/70 backdrop-blur-sm" %>
+                    </div>
+                  </div>
+
+                  <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:pt-5">
+                    <%= f.label :employee, "Employee Name", class: "block text-sm font-medium leading-6 text-indigo-900 sm:pt-1.5" %>
+                    <div class="mt-2 sm:col-span-2 sm:mt-0">
+                      <%= f.text_field :parameters, name: "parameters[employee]", class: "block w-full rounded-lg border-0 py-1.5 text-indigo-900 shadow-sm ring-1 ring-inset ring-indigo-200 placeholder:text-indigo-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-sm sm:leading-6 bg-white/70 backdrop-blur-sm" %>
+                    </div>
+                  </div>
+
+                  <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:pt-5">
+                    <%= f.label :position, "Job Position", class: "block text-sm font-medium leading-6 text-indigo-900 sm:pt-1.5" %>
+                    <div class="mt-2 sm:col-span-2 sm:mt-0">
+                      <%= f.text_field :parameters, name: "parameters[position]", class: "block w-full rounded-lg border-0 py-1.5 text-indigo-900 shadow-sm ring-1 ring-inset ring-indigo-200 placeholder:text-indigo-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-sm sm:leading-6 bg-white/70 backdrop-blur-sm" %>
+                    </div>
+                  </div>
+
+                  <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:pt-5">
+                    <%= f.label :salary, "Annual Salary", class: "block text-sm font-medium leading-6 text-indigo-900 sm:pt-1.5" %>
+                    <div class="mt-2 sm:col-span-2 sm:mt-0">
+                      <div class="relative mt-2 rounded-lg shadow-sm">
+                        <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                          <span class="text-indigo-500 sm:text-sm">$</span>
+                        </div>
+                        <%= f.text_field :parameters, name: "parameters[salary]", class: "block w-full rounded-lg border-0 py-1.5 pl-7 text-indigo-900 shadow-sm ring-1 ring-inset ring-indigo-200 placeholder:text-indigo-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-sm sm:leading-6 bg-white/70 backdrop-blur-sm", placeholder: "0.00" %>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:pt-5">
+                    <%= f.label :duties, "Job Duties", class: "block text-sm font-medium leading-6 text-indigo-900 sm:pt-1.5" %>
+                    <div class="mt-2 sm:col-span-2 sm:mt-0">
+                      <%= f.text_area :parameters, name: "parameters[duties]", rows: 3, class: "block w-full rounded-lg border-0 py-1.5 text-indigo-900 shadow-sm ring-1 ring-inset ring-indigo-200 placeholder:text-indigo-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-sm sm:leading-6 bg-white/70 backdrop-blur-sm" %>
+                      <p class="mt-2 text-sm text-indigo-600">List the main responsibilities and duties of the position.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-6 flex items-center justify-end gap-x-6">
+              <%= link_to "Cancel", documents_path, class: "text-sm font-semibold leading-6 text-indigo-900 hover:text-violet-600 transition-colors duration-200" %>
+              <%= f.submit "Generate Document", class: "rounded-lg bg-gradient-to-r from-violet-600 to-fuchsia-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:from-violet-500 hover:to-fuchsia-500 transition-all duration-200 hover:scale-105" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= javascript_tag do %>
+  document.addEventListener('DOMContentLoaded', function() {
+    const documentTypeSelect = document.querySelector('select[name="document_type"]');
+    const documentFields = document.querySelectorAll('.document-fields');
+    
+    documentTypeSelect.addEventListener('change', function() {
+      documentFields.forEach(field => field.classList.add('hidden'));
+      
+      const selectedType = this.value;
+      if (selectedType === 'Non-Disclosure Agreement') {
+        document.getElementById('nda-fields').classList.remove('hidden');
+      } else if (selectedType === 'Employment Contract') {
+        document.getElementById('employment-fields').classList.remove('hidden');
+      }
+    });
+  });
+<% end %>
