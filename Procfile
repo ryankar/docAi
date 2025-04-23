@@ -1,1 +1,1 @@
-web: bundle exec rails server -p $PORT 
+web: rake assets:precompile && bin/rails server -p $PORT 
