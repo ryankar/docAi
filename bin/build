@@ -4,15 +4,12 @@ set -e
 # Navigate to the app directory
 cd "$(dirname "$0")/.."
 
-echo "-----> Installing node modules"
-npm ci --include=dev
+echo "-----> Installing dependencies"
+bundle install
 
-echo "-----> Running Tailwind CSS build"
-npm run build:css
-
-echo "-----> Precompiling Rails assets"
+echo "-----> Precompiling assets"
 bundle exec rake assets:precompile RAILS_ENV=production
 
-echo "-----> Build completed"
+echo "-----> Build completed successfully"
 
 exit 0 
