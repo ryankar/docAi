@@ -5,7 +5,7 @@ set -e
 cd "$(dirname "$0")/.."
 
 echo "-----> Installing node modules"
-npm install
+npm ci --include=dev
 
 echo "-----> Running Tailwind CSS build"
 npm run build:css
